@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Portfolio | Nour Alhouseini - Ethical Hacker -Penetration Tester </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome"
+        href="/css/app-wa-3b124ff0e0d7a67cd8c995d0aeb1d15a.css?vsn=d">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css">
+    <link rel="shortcut icon" href="./images/Bring-them-back.png" type="image/x-icon">
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .blog-screenshot {
+            width: 100%;
+            max-width: 80em;
+            height: auto !important;
+            border-radius: 1rem !important;
+            border: 1px solid var(--glass-border) !important;
+            display: block;
+            margin: 1.5rem 0;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <!-- header design -->
+    <header class="header" style="background-color: #1f242df4;">
+        <a href="../../index.html" class="logo">Portfolio <sup><i class="fa-classic fa-solid fa-badge-check fa-fw"
+                    style="color: #00EEFF;"></i></sup></a>
+
+        <div class='bx bx-menu' id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="../../index.html#home">&lt;/Home&gt;</a>
+            <a href="../../index.html#about">&lt;/About&gt;</a>
+            <a href="../../index.html#skills">&lt;/Skills&gt;</a>
+            <a href="../../index.html#certificate">&lt;/Education&gt;</a>
+            <a href="../../index.html#services">&lt;/Services&gt;</a>
+            <a href="../../blogs.html" class="active">&lt;/Blogs&gt;</a>
+            <a href="../../index.html#contact">&lt;/Contact&gt;</a>
+        </nav>
+    </header>
+
+    <!-- blogs section design -->
+    <section class="blog" id="blog">
+        <div class="about-img">
+            <img src="../../images/HTB/Giveback/logo.png" class="machinelogo"
+                style="border-radius: 100%; width:20em; height:20em;" alt="HTB GiveBack Machine Logo">
+        </div>
+
+        <div class="about-content">
+
+            <h2 class="heading"> <span>GiveBack</span></h2>
+
+            <div class="blog-meta">
+                <h3>Difficulty: Medium</h3>
+                <p><strong>Platform:</strong> Hack The Box</p>
+                <p><strong>Focus Areas:</strong> Web Exploitation, Internal Pivoting, Secrets Exposure, Privilege
+                    Escalation</p>
+            </div>
+
+            <!-- Executive Summary -->
+            <h3><span>Overview</span></h3>
+            <p style="font-size: large;">
+                GiveBack is a medium-difficulty Hack The Box machine that demonstrates how modern compromises are rarely
+                caused by a single critical flaw, but instead by chaining multiple realistic misconfigurations across
+                web, containerized, and internal infrastructure components.
+
+                The attack begins with a vulnerable WordPress plugin (GiveWP) exposed on a public web server, allowing
+                unauthenticated PHP object injection and remote code execution. This initial foothold leads to discovery
+                of hard-coded secrets and environment metadata, revealing that the application is running inside a
+                Kubernetes pod with access to internal services. Leveraging these leaked credentials enables lateral
+                movement into a legacy internal CMS hosted on a separate Windows environment via tunneling.
+
+                Further enumeration exposes Kubernetes service account tokens, allowing interaction with the cluster's
+                API and extraction of sensitive credentials stored in secrets. These credentials provide SSH access to
+                the host system as a low-privileged user. Finally, an overly permissive sudo configuration combined with
+                a vulnerable container runtime (runc) is abused to escape isolation and read arbitrary files from the
+                host filesystem, resulting in full system compromise.
+            </p>
+
+            <!-- Attack Flow -->
+            <h3><span>Nmap Scan:</span></h3>
+            <div>
+                <img src="../../images/HTB/Giveback/nmap.png" class="blog-screenshot" alt="Nmap Scan Results">
+                <p style="font-size: large;">
+                    From the Nmap scan we can see that the server is running port 22 & 80.
+                    The HTTP server is using Wordpress CMS, we focus on that.
+                </p>
+            </div>
+
+            <h3><span>Initial Access</span></h3>
+            <div>
+                <img src="../../images/HTB/Giveback/front-page.png" class="blog-screenshot" alt="WordPress Front Page">
+                <p style="font-size: large;">
+                    Since this is a Wordpress instance, we will utilize the WPscan tool, to further enumerate the
+                    website, and see what plugins and themes in use.
+                </p>
+                <img src="../../images/HTB/Giveback/wpscan.png" class="blog-screenshot" alt="WPScan Results">
+                <p style="font-size: large; padding-bottom: 30px;">
+                    We see GiveWP, which is a donation and fundraising platform plugin.
+
+
+                    <img src="../../images/HTB/Giveback/web-cve.png" class="blog-screenshot" alt="CVE Details">
+
+
+                <p style="font-size: large;">
+                    After conducting some research, it turns out that this plugin version is vulnerable to <a
+                        style="color:#5EC6FF" href="https://github.com/EQSTLab/CVE-2024-5932">CVE-2024-5932.</a>
+                <p style="white-space: pre-line"><span> The plugin is vulnerable to PHP object injection via
+                        deserialization of untrusted input from the 'give_title' parameter</span> </p>
+
+
+                <h3><span>Confirming the Exploit</span></h3>
+                <p style="font-size: large;">
+                    To ensure the exploit will run successfully, the POC will be examined to understand how it works:
+                <div>
+                    <img src="../../images/HTB/Giveback/exploit-code.png" class="blog-screenshot" alt="Exploit Code">
+                    <p style="font-size: large;">
+                        First, a PHP object which will be passed to the donation form is crafted, filled with fake data
+                        using the Faker library in Python,
+                        and the malicious command is embedded within that object.
+                    </p>
+                    <p style="white-space: pre-line"><span>The "command" variable is replaced by "file" in the
+                            GiveWPExploit class.</span> </p>
+
+                    <img src="../../images/HTB/Giveback/form.png" class="blog-screenshot" alt="Donation Form">
+                    <p style="font-size: large; padding-bottom: 30px;">
+                        This confirms that the exploit we have is applicable to this application, we proceed with
+                        exploting.
+
+                    <h3><span>Exploiting GiveWP:</span></h3>
+                    <div>
+                        <img src="../../images/HTB/Giveback/exploiting1.png" class="blog-screenshot"
+                            alt="Exploiting GiveWP">
+                        <p style="font-size: large;">
+                            And we got a shell.
+                        </p>
+
+                        <h3><span>Lateral Movement</span></h3>
+                        <div>
+                            <p style="font-size: large;">
+                                Further enumeration is carried out, to determine the purpose of this machine and if it
+                                has any valuable data.
+                            </p>
+                            <p style="white-space: pre-line">A lot of enviroment information can be extracted from this
+                                machine, a mariaDB service is running on port 3306, accessing that DB gave a phpass for
+                                a user "user", cracking failed when run against rockyou.txt wordlist.</p>
+                            <p style="white-space: pre-line">In addition, an interesting directory named secrets is
+                                found in root filesystem, it had 3 files, mariadb-password, mariadb-root-password, and
+                                wordpress-password, each contain 1 password.
+                            <p style="white-space: pre-line">What can be confirmed is that this is a Kubernetes pod.
+                                Interestingly, a legacy server is defined in the enviroment variables:
+
+                            </p>
+
+                            <img src="../../images/HTB/Giveback/env-var.png" class="blog-screenshot"
+                                alt="Environment Variables">
+                            <p style="font-size: large;">
+                                In order to interact with the legacy service, <a style="color:#5EC6FF"
+                                    href="https://github.com/jpillora/chisel"> Chisel</a> will be used to establish a
+                                TCP tunnel over HTTP, allowing the local host to display the legacy service
+                            </p>
+
+                            <img src="../../images/HTB/Giveback/chisel.png" class="blog-screenshot" alt="Chisel Tunnel">
+                            <p style="font-size: large;">
+                                Chisel server running on port 8001, traffic will be directed locally via port 2222.
+                            </p>
+
+                            <img src="../../images/HTB/Giveback/internal.png" class="blog-screenshot"
+                                alt="Internal Legacy Service">
+
+                            <p style="font-size: large;">
+                                A developer note states that this legacy CMS was originally deployed on a Windows
+                                instance, so the exploit for this instance would need to be suitable for a Windows
+                                enviroment.
+                            </p>
+                            <p style="white-space: pre-line"><a style="color:#5EC6FF"
+                                    href="https://labs.watchtowr.com/no-way-php-strikes-again-cve-2024-4577/">This
+                                    article</a> explains CVE-2024-4577, a vulnerability where extra command line
+                                arguments can be sneaked into a PHP process due to how it insecuerly interacts with
+                                hyphens. </p>
+
+                            <img src="../../images/HTB/Giveback/exploiting2.png" class="blog-screenshot"
+                                alt="Exploiting Legacy Server">
+                            <p style="font-size: large;">
+                                We end up on the legacy server that has a far more stable shell, we further enumerate
+                                the machine to find any secrets that can help us elevate our privileges.
+                                Since these are Kubernetes pods, the server is inspected for tokens that can allow us to
+                                communicate with the Kubernetes API server.
+                            </p>
+                            <p> <span><a style="color:white; font-style: oblique;"
+                                        href="https://hackviser.com/tactics/pentesting/services/kubernetes">This article
+                                    </a>is a great resource that can be used to learn more about Kubernetes
+                                    enumeration.</span></p>
+
+                            <p style="font-size: large;">
+                                A Kubernetes token is found, which can be used to access the API.
+                            </p>
+
+                            <img src="../../images/HTB/Giveback/k8-api.png" class="blog-screenshot"
+                                alt="Kubernetes API Response">
+                            <p style="font-size: large;">
+                                The API sends back interesting data, including a base64 decoded "masterpass" for a user
+                                babywyrm.
+
+
+                                <img src="../../images/HTB/Giveback/ssh-pass.png" class="blog-screenshot"
+                                    alt="SSH Password">
+                            <p style="font-size: large;">
+                                The Decoded data can be used to SSH into the main machine, with the user babywyrm.
+
+                                <img src="../../images/HTB/Giveback/user.png" class="blog-screenshot" alt="User Flag">
+                            <p><span>And we have user flag.</span></p>
+
+                            <h3><span>Privilege Escalation</span></h3>
+                            <div>
+                                <p style="font-size: large;">
+                                    Now that we a user shell is obtained, we proceed to inspect what the user is capable
+                                    of, what SUID files accessable, what SUDO permessions they have.
+                                <p style="white-space: pre-line">An interesting program /opt/debug is allowed to be run
+                                    with SUDO privileges. However, the program requires a password.</p>
+
+                                </p>
+
+                                <img src="../../images/HTB/Giveback/perms.png" class="blog-screenshot"
+                                    alt="Sudo Permissions">
+                                <p style="font-size: large;">
+                                    Attempts were made to break the password, for example, the rockyou wordlist was used
+                                    against the program since the password might be easy to guess. Also, the user
+                                    does'nt have enough permessions to inspect the executable (such as running strings
+                                    or binwalk).
+                                <p style="white-space: pre-line">After spending some time attempting numerous passwords,
+                                    it's decided to try the passwords found under the /secrets directory in the first
+                                    compromised pod.
+                                </p>
+                                <img src="../../images/HTB/Giveback/version-runc.png" class="blog-screenshot"
+                                    alt="runc Version">
+                                <p style="font-size: large;">
+                                    The program is using runc (a low-level engine for running containers) v 1.1.11.
+                                    Googling this version leads to <a style="color:#5EC6FF"
+                                        href="https://www.vicarius.io/vsociety/posts/leaky-vessels-part-1-cve-2024-21626">CVE-2024-21626</a>
+                                <p style="white-space: pre-line"><span>The vulnerability exists in how a container
+                                        escape can be achieved by setting the CWD value within the config.json file to
+                                        /proc/self/fd/8, which then allows us to read files from the host
+                                        filesystem.</span>
+
+
+
+                                    <img src="../../images/HTB/Giveback/root.png" class="blog-screenshot"
+                                        alt="Root Flag">
+                                <p style="font-size: large;">
+                                    The root.txt file can be read, as well as any other file.
+
+                            </div>
+
+
+
+
+                        </div>
+    </section>
+</body>
+
+</html>
+<!--
+  o          o       o__ __o       o         o   o__ __o       
+ <|\        <|>     /v     v\     <|>       <|> <|     v\      
+ / \\o      / \    />       <\    / \       / \ / \     <\     
+ \o/ v\     \o/  o/           \o  \o/       \o/ \o/     o/     
+  |   <\     |  <|             |>  |         |   |__  _<|      
+ / \    \o  / \  \\           //  < >       < >  |       \     
+ \o/     v\ \o/    \         /     \         /  <o>       \o   
+  |       <\ |      o       o       o       o    |         v\  
+ / \        < \     <\__ __/>       <\__ __/>   / \         <\ 
+
+                     Signature: Nour ✦ Cybersecurity
+-->
