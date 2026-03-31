@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nour Alhouseini - Ethical Hacker - Penetration Tester</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome"
+        href="/css/app-wa-3b124ff0e0d7a67cd8c995d0aeb1d15a.css?vsn=d">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css">
+    <link rel="shortcut icon" href="../images/Bring-them-back.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* ========== WRITEUP-SPECIFIC STYLES ========== */
+        .code-block {
+            background: rgba(10, 10, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            padding: 2rem 2.4rem;
+            margin: 1.5rem 0 2rem;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.35rem;
+            line-height: 1.7;
+            color: #c9d1d9;
+            white-space: pre;
+        }
+
+        .code-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            background: rgba(26, 26, 37, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: none;
+            padding: 0.5rem 1.4rem;
+            border-radius: 0.8rem 0.8rem 0 0;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .technique-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem;
+            font-size: 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .technique-table th {
+            text-align: left;
+            padding: 1.2rem 1.6rem;
+            background: rgba(10, 10, 20, 0.8);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .technique-table td {
+            padding: 1.2rem 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .technique-table tr:hover td {
+            background: rgba(0, 240, 255, 0.03);
+        }
+
+        .technique-table td code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(10, 10, 20, 0.8);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            font-size: 1.2rem;
+            color: #00f0ff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .about-content code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(10, 10, 20, 0.8);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            font-size: 1.4rem;
+            color: #00f0ff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .callout-box {
+            border-left: 3px solid #b44aff;
+            background: rgba(180, 74, 255, 0.05);
+            padding: 2rem 2.4rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 2rem 0;
+        }
+
+        .callout-box.info {
+            border-left-color: #4d7cff;
+            background: rgba(77, 124, 255, 0.05);
+        }
+
+        .callout-box.warn {
+            border-left-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        .callout-box.security {
+            border-left-color: #ff2d75;
+            background: rgba(255, 45, 117, 0.05);
+        }
+
+        .callout-box.tip {
+            border-left-color: #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .callout-box .callout-icon {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+
+        .callout-box p {
+            margin: 0 !important;
+            font-size: 1.45rem !important;
+            line-height: 1.7;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Step list */
+        .steps-list {
+            margin: 2.5rem 0;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: 4.4rem 1fr;
+            gap: 0 1.6rem;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            width: 3.2rem;
+            height: 3.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00f0ff;
+            margin-top: 0.2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 3.8rem;
+            bottom: -0.6rem;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .step-item .step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            font-size: 1.5rem;
+        }
+
+        .step-item .step-body {
+            color: var(--text-secondary);
+            font-size: 1.45rem;
+            padding-bottom: 2.2rem;
+            line-height: 1.7;
+        }
+
+        /* Flow diagram */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2.5rem 0;
+        }
+
+        .flow-node {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.8rem 2.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-node .flow-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .flow-node .flow-desc {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.8rem;
+            line-height: 1;
+            padding: 0.4rem 0;
+        }
+
+        .flow-node.cyan { border-color: rgba(0, 240, 255, 0.2); }
+        .flow-node.cyan .flow-label { color: #00f0ff; }
+        .flow-node.blue { border-color: rgba(77, 124, 255, 0.2); }
+        .flow-node.blue .flow-label { color: #4d7cff; }
+        .flow-node.purple { border-color: rgba(180, 74, 255, 0.2); }
+        .flow-node.purple .flow-label { color: #b44aff; }
+        .flow-node.pink { border-color: rgba(255, 45, 117, 0.2); }
+        .flow-node.pink .flow-label { color: #ff2d75; }
+        .flow-node.green { border-color: rgba(0, 255, 136, 0.15); }
+        .flow-node.green .flow-label { color: #00ff88; }
+
+        /* Compare grid */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 2rem 0;
+        }
+
+        .compare-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .compare-card .card-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .compare-card .card-body {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 0.4rem;
+            letter-spacing: 0.3px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag.green {
+            background: rgba(0, 255, 136, 0.08);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        .tag.amber {
+            background: rgba(251, 191, 36, 0.08);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.15);
+        }
+
+        .tag.red {
+            background: rgba(255, 45, 117, 0.08);
+            color: #ff2d75;
+            border: 1px solid rgba(255, 45, 117, 0.15);
+        }
+
+        /* TOC sidebar styling */
+        .toc-sidebar {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            max-width: 20rem;
+        }
+
+        .toc-sidebar .toc-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .toc-sidebar a {
+            display: block;
+            padding: 0.4rem 0;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.15s;
+            line-height: 1.5;
+        }
+
+        .toc-sidebar a:hover { color: rgba(255,255,255,0.7); }
+        .toc-sidebar a.active { color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+
+        /* Subtitle text */
+        .subtitle-text {
+            font-size: 1.7rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 4.8rem;
+        }
+
+        /* Adjust blog section for writeup layout */
+        .blog {
+            padding-top: 14rem;
+        }
+
+        .about-content h3 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .toc-sidebar { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .compare-grid { grid-template-columns: 1fr; }
+            .step-item { grid-template-columns: 3.2rem 1fr; gap: 0 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <!-- header design -->
+    <header class="header" style="background-color: #1f242df4;">
+        <a href="../index.html" class="logo">Portfolio <sup><i class="fa-classic fa-solid fa-badge-check fa-fw"
+                    style="color: #00EEFF;"></i></sup></a>
+
+        <div class='bx bx-menu' id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="../index.html#home">&lt;/Home&gt;</a>
+            <a href="../index.html#about">&lt;/About&gt;</a>
+            <a href="../index.html#skills">&lt;/Skills&gt;</a>
+            <a href="../index.html#certificate">&lt;/Education&gt;</a>
+            <a href="../index.html#services">&lt;/Services&gt;</a>
+            <a href="../blogs.html" class="active">&lt;/Blogs&gt;</a>
+            <a href="../index.html#contact">&lt;/Contact&gt;</a>
+        </nav>
+    </header>
+
+    <!-- main content -->
+    <section class="blog" id="blog">
+
+        <div class="about-content" style="max-width: 78rem;">
+
+            <h2 class="heading">How Claude Code <span>Actually Works</span></h2>
+
+            <p class="subtitle-text">The agentic loop, streaming tool execution, context management, error recovery, and the permission model. Everything that happens between you pressing Enter and getting a result.</p>
+
+            <!-- ================================ -->
+            <h3 id="big-picture"><span>The Big Picture</span></h3>
+            <p style="font-size: large;">
+                Claude Code is a TypeScript application that renders a terminal UI with React and Ink. When you type a message, it gets sent to the Claude API along with a system prompt and a list of tool definitions. Claude responds with text, tool calls, or both. Tool calls execute locally on your machine. The results get fed back into the conversation. The loop repeats until Claude has nothing left to do.
+            </p>
+            <p style="font-size: large;">
+                There is no remote execution server. Your files, shell, and credentials stay on your machine unless a tool explicitly reaches out (like <code>WebFetch</code> or an MCP server).
+            </p>
+            <p style="font-size: large;">
+                That is the simple version. Here is what actually happens.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="agentic-loop"><span>The Agentic Loop</span></h3>
+            <p style="font-size: large;">
+                Every interaction, whether you are in the interactive REPL or running a headless <code>claude -p</code> command, follows the same cycle. The core loop lives in <code>query.ts</code>, wrapped by <code>QueryEngine.ts</code> which adds session tracking, cost accounting, and SDK integration.
+            </p>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Your message enters the system</div>
+                        <div class="step-body">You type something in the REPL or pass it via <code>--print</code> / stdin. The message gets appended to the conversation history. If you are resuming a session, the full history is loaded from disk first.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Context is assembled</div>
+                        <div class="step-body">Before hitting the API, the system builds a prompt from several layers: your git status (branch, recent commits, working tree state), all discovered <code>CLAUDE.md</code> memory files, the current date, and the full list of available tools. This context is memoized for the session and only rebuilt if explicitly invalidated.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Pre-flight checks run</div>
+                        <div class="step-body">Before the API call, the system runs up to four compaction strategies to keep the conversation within the context window: <strong>history snipping</strong> (remove old messages cheaply), <strong>microcompaction</strong> (truncate stale tool results), <strong>auto-compaction</strong> (Claude summarizes older messages via a forked subprocess), and <strong>context collapse</strong> (project a compressed view over the full history). If the context is still too large after all that, the request is blocked before it wastes an API call.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">The API streams a response</div>
+                        <div class="step-body">The conversation is sent to the Claude API and the response streams back token by token. As content blocks arrive, they are rendered to your terminal in real time. When a <code>tool_use</code> block arrives, something important happens: <strong>the tool starts executing immediately, while the stream is still running.</strong> This is a key latency optimization. The system does not wait for the full response before acting on tool calls.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Tools execute (with permission checks)</div>
+                        <div class="step-body">Each tool call passes through a six-step permission cascade before running. If approved, the tool executes and its output becomes a <code>tool_result</code> block in the conversation. If denied, Claude gets an error message explaining why. Multiple concurrent-safe tools (like file reads and grep searches) can run in parallel. Non-concurrent tools (like Bash) get an exclusive lock.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">The loop decides what to do next</div>
+                        <div class="step-body">Once all tool results are collected, the system checks 11 possible exit conditions: normal completion, max turns reached, budget exhausted, context overflow, user abort, and others. If none are met and Claude's response contained tool calls, the loop iterates with the updated message history. If Claude responded with only text and no tool calls, the conversation turn is done.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-box info">
+                <p><i class="fa-solid fa-circle-info callout-icon" style="color: #4d7cff;"></i> The loop is a <code>while(true)</code> async generator that yields streaming events. It is <strong>not</strong> recursive. State is carried forward via a mutable State object that gets reconstructed at each iteration boundary. The generator pattern lets the UI consume events incrementally without buffering the entire turn in memory.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="streaming"><span>Streaming Tool Execution</span></h3>
+            <p style="font-size: large;">
+                This is probably the most interesting piece of the architecture. Most agent frameworks wait for the model to finish its entire response, then execute all the tool calls, then send the results back. Claude Code does not do that.
+            </p>
+            <p style="font-size: large;">
+                As soon as a <code>tool_use</code> block arrives in the stream, a <strong>StreamingToolExecutor</strong> picks it up and starts executing it. While the model is still generating the rest of its response (maybe more tool calls, maybe text), the first tool is already running. This overlaps model I/O with tool execution and meaningfully reduces end-to-end latency on multi-tool turns.
+            </p>
+
+            <h3><span>How Concurrency Works</span></h3>
+            <p style="font-size: large;">
+                Not all tools can run at the same time. Each tool declares whether it is <strong>concurrent-safe</strong> by implementing an <code>isConcurrencySafe()</code> method. The executor enforces a simple rule:
+            </p>
+
+            <table class="technique-table">
+                <tr>
+                    <th>Scenario</th>
+                    <th>What happens</th>
+                </tr>
+                <tr>
+                    <td>All queued tools are concurrent-safe</td>
+                    <td>They run in parallel. <code>Read</code>, <code>Grep</code>, <code>Glob</code>, and <code>WebSearch</code> are all concurrent-safe.</td>
+                </tr>
+                <tr>
+                    <td>A non-concurrent tool is queued</td>
+                    <td>It waits until all running tools finish, then runs alone. <code>Bash</code> is the main example since shell commands can have side effects that conflict.</td>
+                </tr>
+                <tr>
+                    <td>User aborts mid-execution</td>
+                    <td>An abort signal fires. Running tools are cancelled. Tools that were queued but never started get synthetic <code>tool_result</code> blocks saying "Interrupted by user" so the conversation stays consistent.</td>
+                </tr>
+            </table>
+
+            <h3><span>The Fallback Problem</span></h3>
+            <p style="font-size: large;">
+                Sometimes the system needs to switch models mid-stream (for example, from Opus to Sonnet if streaming overload is detected). When that happens, any tool executions from the old stream become orphans. The executor handles this by discarding the old executor, tombstoning any partial assistant messages so the UI removes them, stripping thinking blocks that might be incompatible with the new model, and spinning up a fresh executor for the retry.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="context"><span>Context Management</span></h3>
+            <p style="font-size: large;">
+                The context window is finite. Long conversations fill it up. Claude Code has a layered system to deal with this, and it is more sophisticated than most people realize.
+            </p>
+
+            <div class="flow-diagram">
+                <div class="flow-node green">
+                    <div class="flow-label">Layer 1: History Snip</div>
+                    <div class="flow-desc">The cheapest strategy. Removes the oldest messages entirely from the API payload. The raw transcript on disk is never touched. This fires first and frees the most space with the least compute.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node blue">
+                    <div class="flow-label">Layer 2: Microcompaction</div>
+                    <div class="flow-desc">Targets stale tool results specifically. If a file was read 30 messages ago and has not been referenced since, the full content gets replaced with a short stub. This is done per-message and defers cache invalidation until after the API response to preserve prompt cache efficiency.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node purple">
+                    <div class="flow-label">Layer 3: Auto-Compaction</div>
+                    <div class="flow-desc">The heavy strategy. Spawns a forked Claude process that reads the older portion of the conversation and produces a natural-language summary. The summary replaces the originals in the API payload. The full transcript is preserved on disk. This costs an extra API call but can recover thousands of tokens.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node pink">
+                    <div class="flow-label">Layer 4: Context Collapse</div>
+                    <div class="flow-desc">A projection-based approach. Instead of rewriting history, it maintains a compressed "view" over the full message list and swaps it in at read time. Summaries live in a separate store. This is the most experimental strategy and is feature-gated.</div>
+                </div>
+            </div>
+
+            <p style="font-size: large;">
+                These layers are not mutually exclusive. In a single pre-flight pass, the system might snip old messages, microcompact stale tool results, and then decide auto-compaction is still needed. Each layer has its own threshold and circuit breaker to prevent runaway compaction loops.
+            </p>
+
+            <div class="callout-box warn">
+                <p><i class="fa-solid fa-triangle-exclamation callout-icon" style="color: #fbbf24;"></i> <strong>What happens when all layers fail?</strong> If the context is still too large after every compaction strategy has run, the system blocks the API call entirely and surfaces an error. It does not silently drop messages or make a doomed request. There is also a reactive compaction path that kicks in if the API itself returns a 413 (prompt too long), attempting one last recovery before giving up.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="tools"><span>The Tool System</span></h3>
+            <p style="font-size: large;">
+                Claude Code ships with 40+ built-in tools and supports unlimited external tools via MCP. Every tool implements the same <code>Tool&lt;Input, Output, Progress&gt;</code> interface, which keeps the system uniform whether you are looking at a simple file read or a complex MCP integration.
+            </p>
+
+            <h3><span>What a Tool Looks Like Internally</span></h3>
+            <p style="font-size: large;">
+                Each tool has a <strong>Zod input schema</strong> for parameter validation, a <strong>call()</strong> method that does the actual work, and five rendering methods that control how it looks in the terminal at different points in its lifecycle: when called, when completed, while running, when the user rejects it, and when it errors.
+            </p>
+            <p style="font-size: large;">
+                Tools also declare metadata that affects how the system treats them:
+            </p>
+
+            <table class="technique-table">
+                <tr>
+                    <th>Property</th>
+                    <th>What it controls</th>
+                </tr>
+                <tr>
+                    <td><code>isConcurrencySafe()</code></td>
+                    <td>Whether this tool can run in parallel with others. Defaults to <code>false</code> (fail-closed).</td>
+                </tr>
+                <tr>
+                    <td><code>isReadOnly()</code></td>
+                    <td>Whether the tool modifies anything. Read-only tools get lighter permission checks.</td>
+                </tr>
+                <tr>
+                    <td><code>maxResultSizeChars</code></td>
+                    <td>When output exceeds this, it gets saved to a temp file and the model receives a preview with the file path. Prevents one large tool result from flooding the context window.</td>
+                </tr>
+                <tr>
+                    <td><code>interruptBehavior()</code></td>
+                    <td>What happens if the user presses Ctrl+C. <code>'cancel'</code> kills the tool; <code>'block'</code> keeps it running.</td>
+                </tr>
+                <tr>
+                    <td><code>checkPermissions()</code></td>
+                    <td>Tool-specific permission logic that runs before the general permission cascade.</td>
+                </tr>
+            </table>
+
+            <p style="font-size: large;">
+                All tools use a <code>buildTool()</code> factory that provides safe defaults, so you cannot accidentally ship a tool that forgets to declare its concurrency safety (it defaults to unsafe).
+            </p>
+
+            <h3><span>Result Size Management</span></h3>
+            <p style="font-size: large;">
+                This is a detail that matters more than it sounds. If a tool returns 500KB of text, shoving all of that into the conversation would eat the context window. The system handles this with a three-tier approach:
+            </p>
+            <p style="font-size: large;">
+                <strong>Tier 1:</strong> If the output is under <code>maxResultSizeChars</code>, send it all to the model as-is.
+            </p>
+            <p style="font-size: large;">
+                <strong>Tier 2:</strong> If it is over the limit, save the full output to a temp file on disk and send the model a preview (first ~1KB) plus the file path.
+            </p>
+            <p style="font-size: large;">
+                <strong>Tier 3:</strong> An aggregate budget tracks total tool result bytes across all tools in a turn. Even if each tool individually stays under its limit, the combined output can still be capped to prevent token explosion from many medium-sized results.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="permissions"><span>The Permission Model</span></h3>
+            <p style="font-size: large;">
+                This is where Claude Code is most opinionated. Every single tool invocation goes through a six-step permission check before anything executes. The system defaults to denying, not allowing.
+            </p>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Input validation</div>
+                        <div class="step-body">The tool's own <code>validateInput()</code> runs first. This catches things like invalid file paths, blocked device paths (<code>/dev/zero</code>, <code>/dev/random</code>), or nonsensical arguments. Rejected before any permission prompt is shown.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Deny rules</div>
+                        <div class="step-body">Checks against configured deny rules from all scopes (user settings, project settings, enterprise policy, session). A blanket deny like <code>"Bash"</code> blocks all shell commands. A specific deny like <code>"Bash(rm -rf *)"</code> blocks just that pattern.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Tool-specific permission logic</div>
+                        <div class="step-body">Some tools have custom checks. <code>FileEdit</code> runs write-permission checks against the file path. <code>Bash</code> parses the command into an AST and evaluates each subcommand individually against permission rules. This is proper shell parsing, not regex matching.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Rule-based evaluation</div>
+                        <div class="step-body">Allow and deny rules from all configured scopes (session > project > user > policy) are evaluated in priority order. The first matching rule wins.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Mode-based adjustment</div>
+                        <div class="step-body">The active permission mode (<code>default</code>, <code>auto</code>, <code>bypass</code>, <code>plan</code>) can override the decision. In bypass mode, everything is auto-approved. In default mode, unrecognized operations prompt the user.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Optional classifier</div>
+                        <div class="step-body">In auto mode, a background classifier can speculatively pre-approve Bash commands. It runs in parallel with the permission prompt, and whichever resolves first wins. If the classifier approves before you respond, the tool runs immediately.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-box security">
+                <p><i class="fa-solid fa-lock callout-icon" style="color: #ff2d75;"></i> <strong>Anti-fatigue protection.</strong> If you deny a tool 5 times in a row, the system stops asking and auto-rejects subsequent attempts for that tool. This prevents the model from getting stuck in a loop where it keeps retrying a denied action.</p>
+            </div>
+
+            <h3><span>Three Handlers for Three Contexts</span></h3>
+            <p style="font-size: large;">
+                The permission system is not monolithic. There are three separate permission handlers depending on where the code is running:
+            </p>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag green">Interactive</span></div>
+                    <div class="card-body">The main REPL. Shows a confirmation dialog in the terminal. Supports keyboard navigation to approve, deny, or grant session-wide permissions.</div>
+                </div>
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag amber">Coordinator</span></div>
+                    <div class="card-body">Used by the swarm leader. Runs automated checks before showing UI dialogs. Limits prompt frequency to avoid flooding the user with permission requests from multiple agents.</div>
+                </div>
+            </div>
+            <div class="compare-grid" style="grid-template-columns:1fr;">
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag red">Swarm Worker</span></div>
+                    <div class="card-body">Background agents that cannot show UI. Auto-denies all interactive permission requests. Only hook-based approvals work in this context. If a worker needs something it does not have permission for, it fails and reports back to the leader.</div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="error-recovery"><span>Error Recovery</span></h3>
+            <p style="font-size: large;">
+                The agentic loop has to handle a lot of failure modes gracefully. The system uses a multi-layer recovery approach with circuit breakers at each level to prevent infinite retry loops.
+            </p>
+
+            <h3><span>When the Context Is Too Large (413)</span></h3>
+            <p style="font-size: large;">
+                If the API returns a 413 "prompt too long" error, the response is <strong>withheld</strong> (stored internally but not shown to the user or yielded to the UI). The system then attempts recovery:
+            </p>
+            <p style="font-size: large;">
+                <strong>First attempt:</strong> Context collapse drain. If the context collapse system is available, try projecting a more compressed view and retrying. This is the cheapest recovery.
+            </p>
+            <p style="font-size: large;">
+                <strong>Second attempt:</strong> Reactive compaction. Run a full summarization pass on older messages, then retry. This costs an API call but can recover a lot of space.
+            </p>
+            <p style="font-size: large;">
+                <strong>If both fail:</strong> Surface the error to the user. The system does not silently drop messages or try progressively more aggressive truncation. It stops and tells you what happened.
+            </p>
+
+            <h3><span>When the Output Gets Cut Off</span></h3>
+            <p style="font-size: large;">
+                Sometimes Claude's response hits the maximum output token limit mid-sentence. The system handles this in two stages:
+            </p>
+            <p style="font-size: large;">
+                <strong>Escalation:</strong> If the response was capped at the default 8K output limit and the feature is enabled, automatically retry with a 64K limit. This fires once per turn.
+            </p>
+            <p style="font-size: large;">
+                <strong>Multi-turn continuation:</strong> If the response is still too long at 64K, inject a synthetic user message asking Claude to continue where it left off. This can repeat up to a configurable limit, after which the system gives up and shows what it has.
+            </p>
+
+            <h3><span>When Models Fail Mid-Stream</span></h3>
+            <p style="font-size: large;">
+                If the primary model encounters a streaming error (overload, timeout, etc.) and a fallback model is configured, the system switches models mid-conversation. This involves tombstoning partial messages from the failed stream, stripping model-specific thinking blocks that might be incompatible, creating a fresh streaming executor, and notifying the user about the switch. The conversation continues seamlessly on the fallback model.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="mcp"><span>MCP Integration</span></h3>
+            <p style="font-size: large;">
+                The Model Context Protocol lets you connect external tools and data sources. Claude Code's MCP client supports multiple transport types (stdio, SSE, WebSocket, HTTP) and handles authentication, including OAuth with automatic token refresh and step-up auth detection.
+            </p>
+            <p style="font-size: large;">
+                MCP tools are wrapped in the same <code>Tool</code> interface as built-in tools. They go through the same permission cascade, the same result size management, and the same concurrency model. From the agentic loop's perspective, there is no difference between a built-in <code>Read</code> tool and an MCP tool from a remote server.
+            </p>
+            <p style="font-size: large;">
+                One implementation detail worth knowing: when assembling the tool list for the API call, built-in tools are sorted separately from MCP tools before concatenation. This preserves prompt cache stability. If MCP tools were interleaved with built-in tools, adding or removing a single MCP connection would invalidate the entire prompt cache.
+            </p>
+
+            <div class="callout-box tip">
+                <p><i class="fa-solid fa-shield-check callout-icon" style="color: #00ff88;"></i> <strong>Output sanitization.</strong> All MCP tool outputs are passed through a Unicode sanitizer that strips control characters and zero-width sequences. This prevents a malicious MCP server from injecting terminal escape codes that could manipulate your terminal display.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="sessions"><span>Sessions and Persistence</span></h3>
+            <p style="font-size: large;">
+                Every conversation is saved as a JSON transcript file in <code>~/.claude/</code>. Each session has a unique ID. You can resume with <code>--resume &lt;id&gt;</code> or just <code>--continue</code> to pick up the most recent one.
+            </p>
+            <p style="font-size: large;">
+                When you resume: the full message history loads from disk. Memory files (<code>CLAUDE.md</code>) are re-discovered and may have changed since the original session. The permission mode resets to your configured default. Cost tracking state is restored so the running total stays accurate across sessions.
+            </p>
+            <p style="font-size: large;">
+                Compaction only affects what gets sent to the API. The raw transcript on disk always contains the full, uncompacted conversation. You never lose history to compaction.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="multi-agent"><span>Multi-Agent Coordination</span></h3>
+            <p style="font-size: large;">
+                Claude Code can spawn sub-agents via the <code>Agent</code> tool. Each sub-agent runs its own isolated agentic loop with a separate conversation, and optionally a restricted tool set. The leader agent orchestrates; workers execute.
+            </p>
+            <p style="font-size: large;">
+                Workers run with the <strong>swarm worker permission handler</strong>, which auto-denies interactive prompts. They can only do things that are pre-approved by rules or hooks. If a worker hits a permission wall, it fails gracefully and reports back to the leader, which can decide how to proceed.
+            </p>
+            <p style="font-size: large;">
+                In coordinator mode, workers get a subset of tools. They cannot spawn their own sub-agents (no recursive spawning) and do not have access to internal coordination tools. Each worker can optionally run in an isolated git worktree to avoid file conflicts with the leader or other workers.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="cost"><span>Cost Tracking</span></h3>
+            <p style="font-size: large;">
+                Token usage is tracked per-model across the entire session. The cost tracker records input tokens, output tokens, prompt cache read/creation tokens, tool invocation counts, web search requests, and file change metrics (lines added/removed). All of this is visible via the <code>/cost</code> command.
+            </p>
+            <p style="font-size: large;">
+                A USD budget can be set per-session. If the running cost exceeds the budget, the agentic loop stops and reports the overage. Budget tracking survives session resume since the cost state is serialized to disk alongside the transcript.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="entrypoint"><span>The Entry Point</span></h3>
+            <p style="font-size: large;">
+                <code>main.tsx</code> is where everything starts. It parses CLI arguments, determines the execution mode (interactive, headless, resume, assistant, SSH remote, teleport, or direct connect), assembles the system prompt, initializes MCP connections and plugins, presents the trust dialog, and mounts the Ink application.
+            </p>
+            <p style="font-size: large;">
+                The system prompt is built in layers: a base prompt, optional teammate instructions, browser integration hints (for Chrome mode), custom agent prompts (for tmux-spawned agents), proactive mode addendum, and assistant mode addendum. Each layer is appended via string concatenation in sequence.
+            </p>
+
+            <div class="callout-box info">
+                <p><i class="fa-solid fa-microchip callout-icon" style="color: #4d7cff;"></i> <strong>Feature flags.</strong> Many subsystems are gated behind compile-time feature flags using <code>bun:bundle</code>. When a feature is disabled, its code is eliminated at build time, not just branched around at runtime. This keeps the shipped bundle lean for each platform target (CLI, VS Code extension, desktop app, SDK).</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <p style="color: rgba(255,255,255,0.3); font-size: 1.4rem; margin-top: 3.2rem;">Built from the source. Last updated March 2026.</p>
+
+        </div>
+    </section>
+
+    <!-- TOC sidebar -->
+    <aside class="toc-sidebar">
+        <div class="toc-title">On this page</div>
+        <a href="#big-picture">The big picture</a>
+        <a href="#agentic-loop">The agentic loop</a>
+        <a href="#streaming">Streaming tool execution</a>
+        <a href="#context">Context management</a>
+        <a href="#tools">The tool system</a>
+        <a href="#permissions">The permission model</a>
+        <a href="#error-recovery">Error recovery</a>
+        <a href="#mcp">MCP integration</a>
+        <a href="#sessions">Sessions and persistence</a>
+        <a href="#multi-agent">Multi-agent coordination</a>
+        <a href="#cost">Cost tracking</a>
+        <a href="#entrypoint">The entry point</a>
+    </aside>
+
+    <!-- TOC highlight script -->
+    <script>
+    (function(){
+        const toc = document.querySelector('.toc-sidebar');
+        if (!toc) return;
+        const links = toc.querySelectorAll('a[href^="#"]');
+        const sections = Array.from(links).map(a => ({
+            link: a,
+            target: document.getElementById(a.getAttribute('href').slice(1))
+        })).filter(s => s.target);
+
+        function update() {
+            let current = sections[0];
+            for (const s of sections) {
+                if (s.target.getBoundingClientRect().top <= 120) current = s;
+            }
+            links.forEach(l => l.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
