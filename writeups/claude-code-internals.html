@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nour Alhouseini - Ethical Hacker - Penetration Tester</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome"
+        href="/css/app-wa-3b124ff0e0d7a67cd8c995d0aeb1d15a.css?vsn=d">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css">
+    <link rel="shortcut icon" href="../images/Bring-them-back.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* ========== WRITEUP-SPECIFIC STYLES ========== */
+        .code-block {
+            background: rgba(10, 10, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            padding: 2rem 2.4rem;
+            margin: 1.5rem 0 2rem;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.35rem;
+            line-height: 1.7;
+            color: #c9d1d9;
+            white-space: pre;
+        }
+
+        .code-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            background: rgba(26, 26, 37, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: none;
+            padding: 0.5rem 1.4rem;
+            border-radius: 0.8rem 0.8rem 0 0;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .technique-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem;
+            font-size: 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .technique-table th {
+            text-align: left;
+            padding: 1.2rem 1.6rem;
+            background: rgba(10, 10, 20, 0.8);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .technique-table td {
+            padding: 1.2rem 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .technique-table tr:hover td {
+            background: rgba(0, 240, 255, 0.03);
+        }
+
+        .technique-table td code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(10, 10, 20, 0.8);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            font-size: 1.2rem;
+            color: #00f0ff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .about-content code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(10, 10, 20, 0.8);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            font-size: 1.4rem;
+            color: #00f0ff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .callout-box {
+            border-left: 3px solid #b44aff;
+            background: rgba(180, 74, 255, 0.05);
+            padding: 2rem 2.4rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 2rem 0;
+        }
+
+        .callout-box.info {
+            border-left-color: #4d7cff;
+            background: rgba(77, 124, 255, 0.05);
+        }
+
+        .callout-box.warn {
+            border-left-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        .callout-box.security {
+            border-left-color: #ff2d75;
+            background: rgba(255, 45, 117, 0.05);
+        }
+
+        .callout-box.tip {
+            border-left-color: #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .callout-box .callout-icon {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+
+        .callout-box p {
+            margin: 0 !important;
+            font-size: 1.45rem !important;
+            line-height: 1.7;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Step list */
+        .steps-list {
+            margin: 2.5rem 0;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: 4.4rem 1fr;
+            gap: 0 1.6rem;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            width: 3.2rem;
+            height: 3.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00f0ff;
+            margin-top: 0.2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 3.8rem;
+            bottom: -0.6rem;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .step-item .step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            font-size: 1.5rem;
+        }
+
+        .step-item .step-body {
+            color: var(--text-secondary);
+            font-size: 1.45rem;
+            padding-bottom: 2.2rem;
+            line-height: 1.7;
+        }
+
+        /* Flow diagram */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2.5rem 0;
+        }
+
+        .flow-node {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.8rem 2.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-node .flow-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .flow-node .flow-desc {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.8rem;
+            line-height: 1;
+            padding: 0.4rem 0;
+        }
+
+        .flow-node.cyan { border-color: rgba(0, 240, 255, 0.2); }
+        .flow-node.cyan .flow-label { color: #00f0ff; }
+        .flow-node.blue { border-color: rgba(77, 124, 255, 0.2); }
+        .flow-node.blue .flow-label { color: #4d7cff; }
+        .flow-node.purple { border-color: rgba(180, 74, 255, 0.2); }
+        .flow-node.purple .flow-label { color: #b44aff; }
+        .flow-node.pink { border-color: rgba(255, 45, 117, 0.2); }
+        .flow-node.pink .flow-label { color: #ff2d75; }
+        .flow-node.green { border-color: rgba(0, 255, 136, 0.15); }
+        .flow-node.green .flow-label { color: #00ff88; }
+
+        /* Compare grid */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 2rem 0;
+        }
+
+        .compare-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .compare-card .card-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .compare-card .card-body {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 0.4rem;
+            letter-spacing: 0.3px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag.green {
+            background: rgba(0, 255, 136, 0.08);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        .tag.amber {
+            background: rgba(251, 191, 36, 0.08);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.15);
+        }
+
+        .tag.red {
+            background: rgba(255, 45, 117, 0.08);
+            color: #ff2d75;
+            border: 1px solid rgba(255, 45, 117, 0.15);
+        }
+
+        /* TOC sidebar styling */
+        .toc-sidebar {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            max-width: 20rem;
+        }
+
+        .toc-sidebar .toc-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .toc-sidebar a {
+            display: block;
+            padding: 0.4rem 0;
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.15s;
+            line-height: 1.5;
+        }
+
+        .toc-sidebar a:hover { color: rgba(255,255,255,0.7); }
+        .toc-sidebar a.active { color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+
+        /* Subtitle text */
+        .subtitle-text {
+            font-size: 1.7rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 4.8rem;
+        }
+
+        /* Adjust blog section for writeup layout */
+        .blog {
+            padding-top: 14rem;
+        }
+
+        .about-content h3 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .toc-sidebar { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .compare-grid { grid-template-columns: 1fr; }
+            .step-item { grid-template-columns: 3.2rem 1fr; gap: 0 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <!-- header design -->
+    <header class="header" style="background-color: #1f242df4;">
+        <a href="../index.html" class="logo">Portfolio <sup><i class="fa-classic fa-solid fa-badge-check fa-fw"
+                    style="color: #00EEFF;"></i></sup></a>
+
+        <div class='bx bx-menu' id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="../index.html#home">&lt;/Home&gt;</a>
+            <a href="../index.html#about">&lt;/About&gt;</a>
+            <a href="../index.html#skills">&lt;/Skills&gt;</a>
+            <a href="../index.html#certificate">&lt;/Education&gt;</a>
+            <a href="../index.html#services">&lt;/Services&gt;</a>
+            <a href="../blogs.html" class="active">&lt;/Blogs&gt;</a>
+            <a href="../index.html#contact">&lt;/Contact&gt;</a>
+        </nav>
+    </header>
+
+    <!-- main content -->
+    <section class="blog" id="blog">
+
+        <div class="about-content" style="max-width: 78rem;">
+
+            <h2 class="heading">Inside Claude Code's <span>Source Code</span></h2>
+
+            <p class="subtitle-text">I read through the entire leaked source  - 2,203 files, ~30MB of TypeScript. The agentic loop, tool concurrency, context compaction, permission model, and the architectural decisions (good and bad) behind one of the most widely used AI coding agents in the world.</p>
+
+            <!-- ================================ -->
+            <h3 id="big-picture"><span>The Big Picture</span></h3>
+            <p style="font-size: large;">
+                Claude Code is Anthropic's terminal-based AI coding agent. You type a prompt, it reads your codebase, runs commands, edits files. It is a TypeScript application that renders a terminal UI with React and <strong>Ink</strong>. When you type a message, it gets sent to the Claude API along with a system prompt and a list of tool definitions. Claude responds with text, tool calls, or both. Tool calls execute locally on your machine. The results get fed back into the conversation. The loop repeats until Claude has nothing left to do.
+            </p>
+            <p style="font-size: large;">
+                There is no remote execution server. Your files, shell, and credentials stay on your machine unless a tool explicitly reaches out (like <code>WebFetch</code> or an MCP server).
+            </p>
+            <p style="font-size: large;">
+                That is the simple version. After spending hours tracing execution paths and grepping through every module, here is what I actually found. The engineering is impressive in places  - the query loop, the tool concurrency system, the permission classifier. Real thought went into these. But some parts made me stop and think "wait, really?" This is not a hit piece. Every codebase has debt. But Claude Code runs arbitrary commands on your machine, and it is built by a company with $10B+ in funding. Some of these choices are worth examining.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="agentic-loop"><span>The Agentic Loop</span></h3>
+            <p style="font-size: large;">
+                Every interaction, whether you are in the interactive REPL or running a headless <code>claude -p</code> command, follows the same cycle. The core loop lives in <code>query.ts</code>, wrapped by <code>QueryEngine.ts</code> which adds session tracking, cost accounting, and SDK integration.
+            </p>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Your message enters the system</div>
+                        <div class="step-body">You type something in the REPL or pass it via <code>--print</code> / stdin. The message gets appended to the conversation history. If you are resuming a session, the full history is loaded from disk first.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Context is assembled</div>
+                        <div class="step-body">Before hitting the API, the system builds a prompt from several layers: your git status (branch, recent commits, working tree state), all discovered <code>CLAUDE.md</code> memory files, the current date, and the full list of available tools. This context is memoized for the session and only rebuilt if explicitly invalidated.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Pre-flight checks run</div>
+                        <div class="step-body">Before the API call, the system runs up to four compaction strategies to keep the conversation within the context window: <strong>history snipping</strong>, <strong>microcompaction</strong>, <strong>auto-compaction</strong>, and <strong>context collapse</strong>. If the context is still too large after all that, the request is blocked before it wastes an API call.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">The API streams a response</div>
+                        <div class="step-body">The conversation is sent to the Claude API and the response streams back token by token. When a <code>tool_use</code> block arrives, <strong>the tool starts executing immediately, while the stream is still running.</strong> The system does not wait for the full response before acting on tool calls.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Tools execute (with permission checks)</div>
+                        <div class="step-body">Each tool call passes through a six-step permission cascade before running. Multiple concurrent-safe tools can run in parallel. Non-concurrent tools (like Bash) get an exclusive lock.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">The loop decides what to do next</div>
+                        <div class="step-body">The system checks 11 possible exit conditions: normal completion, max turns reached, budget exhausted, context overflow, user abort, and others. If none are met and the response contained tool calls, the loop iterates.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-box info">
+                <p><i class="fa-solid fa-circle-info callout-icon" style="color: #4d7cff;"></i> The loop is a <code>while(true)</code> async generator that yields streaming events. It is <strong>not</strong> recursive. State is carried forward via a mutable State object that gets reconstructed at each iteration boundary. The generator pattern lets the UI consume events incrementally without buffering the entire turn in memory.</p>
+            </div>
+
+            <p style="font-size: large;">
+                The architecture here is clean. But the component that <em>renders</em> this loop is where things get rough. The main REPL interface is a single React component in <code>screens/REPL.tsx</code>. It is <strong>5,005 lines long</strong>. Inside that one file: 68 <code>useState</code> calls, 43 <code>useEffect</code>s, 54 <code>useRef</code>s, 44 <code>useCallback</code>s, 18 <code>useMemo</code>s. That is 227 hook calls in one component. The JSX nesting goes 22 spaces deep. Over 300 conditional branches. The import section alone is 244 statements pulling from 235 distinct modules.
+            </p>
+            <p style="font-size: large;">
+                A file with 227 hook calls is functionally untestable in isolation. Every <code>useEffect</code> interacts with every <code>useState</code>. The dependency arrays become impossible to reason about. There is a <code>// TODO: fix this</code> on line 4114, sitting next to an <code>eslint-disable-next-line react-hooks/exhaustive-deps</code>  - the team knows it. A state machine driving 15-20 focused components would be the standard approach for a UI with this many states: initializing, waiting for input, streaming, executing tools, awaiting permission, compacting, showing results. Each state maps to a component. The 68 useStates become one typed state object with explicit transitions.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="streaming"><span>Streaming Tool Execution</span></h3>
+            <p style="font-size: large;">
+                This is probably the most well-designed piece of the architecture. Most agent frameworks wait for the model to finish its entire response, then execute all the tool calls, then send the results back. Claude Code does not do that.
+            </p>
+            <p style="font-size: large;">
+                As soon as a <code>tool_use</code> block arrives in the stream, a <strong>StreamingToolExecutor</strong> picks it up and starts executing it. While the model is still generating the rest of its response, the first tool is already running. This overlaps model I/O with tool execution and meaningfully reduces end-to-end latency on multi-tool turns.
+            </p>
+
+            <table class="technique-table">
+                <tr>
+                    <th>Scenario</th>
+                    <th>What happens</th>
+                </tr>
+                <tr>
+                    <td>All queued tools are concurrent-safe</td>
+                    <td>They run in parallel. <code>Read</code>, <code>Grep</code>, <code>Glob</code>, and <code>WebSearch</code> are all concurrent-safe.</td>
+                </tr>
+                <tr>
+                    <td>A non-concurrent tool is queued</td>
+                    <td>It waits until all running tools finish, then runs alone. <code>Bash</code> is the main example.</td>
+                </tr>
+                <tr>
+                    <td>User aborts mid-execution</td>
+                    <td>Running tools are cancelled. Queued tools get synthetic <code>tool_result</code> blocks saying "Interrupted by user" to keep the conversation consistent.</td>
+                </tr>
+                <tr>
+                    <td>Model fallback mid-stream</td>
+                    <td>Old executor is discarded, partial messages are tombstoned, thinking blocks are stripped, fresh executor spins up for the retry.</td>
+                </tr>
+            </table>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="context"><span>Context Management</span></h3>
+            <p style="font-size: large;">
+                The context window is finite. Long conversations fill it up. Claude Code has a layered compaction system that is more sophisticated than most people realize.
+            </p>
+
+            <div class="flow-diagram">
+                <div class="flow-node green">
+                    <div class="flow-label">Layer 1: History Snip</div>
+                    <div class="flow-desc">The cheapest strategy. Removes the oldest messages entirely from the API payload. The raw transcript on disk is never touched.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node blue">
+                    <div class="flow-label">Layer 2: Microcompaction</div>
+                    <div class="flow-desc">Targets stale tool results. If a file was read 30 messages ago and not referenced since, the full content gets replaced with a short stub. Defers cache invalidation until after the API response to preserve prompt cache efficiency.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node purple">
+                    <div class="flow-label">Layer 3: Auto-Compaction</div>
+                    <div class="flow-desc">Spawns a forked Claude process that summarizes older messages. The summary replaces the originals in the API payload. The full transcript is preserved on disk. Costs an extra API call but can recover thousands of tokens.</div>
+                </div>
+                <div class="flow-arrow">&#8595;</div>
+                <div class="flow-node pink">
+                    <div class="flow-label">Layer 4: Context Collapse</div>
+                    <div class="flow-desc">A projection-based approach. Instead of rewriting history, maintains a compressed "view" over the full message list and swaps it in at read time. Most experimental strategy, feature-gated.</div>
+                </div>
+            </div>
+
+            <div class="callout-box warn">
+                <p><i class="fa-solid fa-triangle-exclamation callout-icon" style="color: #fbbf24;"></i> <strong>When all layers fail:</strong> If the context is still too large after every compaction strategy has run, the system blocks the API call entirely and surfaces an error. It does not silently drop messages. There is also a reactive compaction path that kicks in if the API returns a 413 (prompt too long), attempting one last recovery before giving up.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="tools"><span>The Tool System</span></h3>
+            <p style="font-size: large;">
+                Claude Code ships with 40+ built-in tools and supports unlimited external tools via MCP. Every tool implements the same <code>Tool&lt;Input, Output, Progress&gt;</code> interface. Each tool has a <strong>Zod input schema</strong> for parameter validation, a <strong>call()</strong> method, and five rendering methods for different lifecycle points.
+            </p>
+
+            <table class="technique-table">
+                <tr>
+                    <th>Property</th>
+                    <th>What it controls</th>
+                </tr>
+                <tr>
+                    <td><code>isConcurrencySafe()</code></td>
+                    <td>Whether this tool can run in parallel. Defaults to <code>false</code> (fail-closed).</td>
+                </tr>
+                <tr>
+                    <td><code>isReadOnly()</code></td>
+                    <td>Read-only tools get lighter permission checks.</td>
+                </tr>
+                <tr>
+                    <td><code>maxResultSizeChars</code></td>
+                    <td>When output exceeds this, it gets saved to a temp file and the model receives a preview. Prevents one large result from flooding the context.</td>
+                </tr>
+                <tr>
+                    <td><code>interruptBehavior()</code></td>
+                    <td><code>'cancel'</code> kills the tool on Ctrl+C; <code>'block'</code> keeps it running.</td>
+                </tr>
+            </table>
+
+            <p style="font-size: large;">
+                The tool design is solid. All tools use a <code>buildTool()</code> factory with safe defaults. But the <code>Tool.ts</code> type definition file itself is 792 lines long and imports from permission types, message types, analytics, MCP types, agent types, progress types, hooks, and more. When the central type in your architecture imports from everything and everything imports from it, you get dependency cycles. Grepping the codebase for "break import cycle" or "circular dependency" hits <strong>61 different files</strong>.
+            </p>
+
+            <div class="code-block">// types/permissions.ts
+// Pure permission type definitions extracted to break import cycles.
+
+// schemas/hooks.ts
+// Hook Zod schemas extracted to break import cycles.
+// circular dependency between settings/types.ts and plugins/schemas.ts.
+
+// utils/systemPrompt.ts
+// Lazy require to avoid circular dependency at module load time
+
+// utils/bash/ast.ts (line 2218)
+// circular import with bashPermissions.ts.</div>
+
+            <p style="font-size: large;">
+                The pattern is always the same: extract types to a separate file, use lazy requires, or inline code that should be imported. Entire files like <code>types/permissions.ts</code> and <code>schemas/hooks.ts</code> exist purely as import cycle band-aids. 61 files means the module graph was never designed  - it grew organically and now has deep tangles. Every lazy require is a place where TypeScript cannot help you at compile time.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="permissions"><span>The Permission Model</span></h3>
+            <p style="font-size: large;">
+                This is where Claude Code is most opinionated, and it is well done. Every single tool invocation goes through a six-step permission check before anything executes. The system defaults to denying, not allowing.
+            </p>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Input validation</div>
+                        <div class="step-body">The tool's own <code>validateInput()</code> runs first. Catches invalid file paths, blocked device paths (<code>/dev/zero</code>, <code>/dev/random</code>), or nonsensical arguments.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Deny rules</div>
+                        <div class="step-body">Checks against configured deny rules from all scopes. A blanket deny like <code>"Bash"</code> blocks all shell commands. A specific deny like <code>"Bash(rm -rf *)"</code> blocks just that pattern.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Tool-specific permission logic</div>
+                        <div class="step-body"><code>Bash</code> parses the command into an AST and evaluates each subcommand individually against permission rules. This is proper shell parsing via tree-sitter, not regex matching. This is one of the best-designed parts of the entire codebase.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Rule-based evaluation</div>
+                        <div class="step-body">Allow and deny rules from all configured scopes (session > project > user > policy) are evaluated in priority order. The first matching rule wins.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Mode-based adjustment</div>
+                        <div class="step-body">The active permission mode (<code>default</code>, <code>auto</code>, <code>bypass</code>, <code>plan</code>) can override the decision. In bypass mode, everything is auto-approved.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div>
+                        <div class="step-title">Optional classifier</div>
+                        <div class="step-body">In auto mode, a background classifier can speculatively pre-approve Bash commands. It runs in parallel with the permission prompt. Whichever resolves first wins.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-box security">
+                <p><i class="fa-solid fa-lock callout-icon" style="color: #ff2d75;"></i> <strong>Anti-fatigue protection.</strong> If you deny a tool 5 times in a row, the system stops asking and auto-rejects subsequent attempts. Prevents the model from getting stuck in a retry loop on a denied action.</p>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag green">Interactive</span></div>
+                    <div class="card-body">The main REPL. Shows a confirmation dialog in the terminal. Supports keyboard navigation to approve, deny, or grant session-wide permissions.</div>
+                </div>
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag amber">Coordinator</span></div>
+                    <div class="card-body">Used by the swarm leader. Runs automated checks before showing UI dialogs. Limits prompt frequency to avoid flooding the user.</div>
+                </div>
+            </div>
+            <div class="compare-grid" style="grid-template-columns:1fr;">
+                <div class="compare-card">
+                    <div class="card-title"><span class="tag red">Swarm Worker</span></div>
+                    <div class="card-body">Background agents that cannot show UI. Auto-denies all interactive permission requests. Only hook-based approvals work here. If a worker needs something it does not have permission for, it fails and reports back to the leader.</div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="feature-flags"><span>89 Feature Flags, 960 References</span></h3>
+            <p style="font-size: large;">
+                Claude Code uses Bun's compile-time <code>feature()</code> function for feature gating. There are <strong>89 distinct feature flags</strong> referenced <strong>960 times</strong> across the codebase. On top of that, 472 distinct environment variables are referenced across 1,425 call sites.
+            </p>
+            <p style="font-size: large;">
+                Some of these are clearly experiments (<code>ABLATION_BASELINE</code>, <code>OVERFLOW_TEST_TOOL</code>). Some are entire product directions (<code>KAIROS</code>, <code>COORDINATOR_MODE</code>, <code>BRIDGE_MODE</code>). Some sound like they should have shipped or been deleted months ago (<code>EXPERIMENTAL_SKILL_SEARCH</code>, <code>NEW_INIT</code>).
+            </p>
+
+            <div class="code-block">ABLATION_BASELINE, AGENT_MEMORY_SNAPSHOT, AGENT_TRIGGERS,
+BASH_CLASSIFIER, BG_SESSIONS, BRIDGE_MODE, BUDDY,
+CACHED_MICROCOMPACT, CONTEXT_COLLAPSE, COORDINATOR_MODE,
+DAEMON, DIRECT_CONNECT, ENHANCED_TELEMETRY_BETA,
+KAIROS, KAIROS_BRIEF, KAIROS_CHANNELS, KAIROS_DREAM,
+KAIROS_GITHUB_WEBHOOKS, KAIROS_PUSH_NOTIFICATION,
+LODESTONE, MCP_SKILLS, PROACTIVE, REACTIVE_COMPACT,
+SSH_REMOTE, ULTRAPLAN, ULTRATHINK, VOICE_MODE,
+WEB_BROWSER_TOOL, WORKFLOW_SCRIPTS
+// ... 60 more flags</div>
+
+            <p style="font-size: large;">
+                When you have <code>KAIROS</code>, <code>KAIROS_BRIEF</code>, <code>KAIROS_CHANNELS</code>, <code>KAIROS_DREAM</code>, <code>KAIROS_GITHUB_WEBHOOKS</code>, and <code>KAIROS_PUSH_NOTIFICATION</code> as separate flags, that is not a gradual rollout. That is an entire parallel product built inside the same codebase behind conditional requires. A monorepo without the monorepo tooling.
+            </p>
+            <p style="font-size: large;">
+                Since <code>feature()</code> is compile-time, dead code gets eliminated from the build. The runtime never sees unused paths. Performance-wise, it is fine. The cost is in developer experience  - 960 feature checks scattered across the codebase, and nobody knows which ones are still alive.
+            </p>
+
+            <p style="font-size: large;">
+                This leads to a pattern that appears everywhere, especially in <code>REPL.tsx</code> (17 times) and <code>query.ts</code> (6 times):
+            </p>
+
+            <div class="code-block">// query.ts
+const reactiveCompact = feature('REACTIVE_COMPACT')
+  ? (require('./services/compact/reactiveCompact.js')
+     as typeof import('./services/compact/reactiveCompact.js'))
+  : null
+
+const contextCollapse = feature('CONTEXT_COLLAPSE')
+  ? (require('./services/contextCollapse/index.js')
+     as typeof import('./services/contextCollapse/index.js'))
+  : null</div>
+
+            <p style="font-size: large;">
+                TypeScript code using <code>require()</code> inside an ES module, wrapped in a compile-time feature check, with a type assertion to recover the types that <code>require()</code> loses. Each one is a place where the type system has a gap. The <code>as typeof import(...)</code> cast tells TypeScript "trust me." If someone changes the export shape, the cast silently lies. No compiler error. You find out at runtime. Dynamic <code>import()</code> would preserve types and is the standard solution for conditional module loading.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="analytics"><span>The 1,193-Character Type Cast</span></h3>
+            <p style="font-size: large;">
+                Every analytics call in Claude Code requires a type cast to a type named <code>AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS</code>. It appears <strong>1,193 times</strong> across the codebase.
+            </p>
+
+            <div class="code-block">logEvent('tengu_startup_telemetry', {
+  entrypoint: entrypoint as AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
+  action: 'hint_converted' as AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
+  variant: idleHintShownRef.current as AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
+})</div>
+
+            <p style="font-size: large;">
+                The intent is admirable. Claude Code runs on people's actual codebases. You do not want to accidentally log file paths, source code, or secrets to an analytics pipeline. So they made a type that forces developers to manually confirm "yes, this string is safe to log."
+            </p>
+            <p style="font-size: large;">
+                But when you are writing this 53-character type cast over a thousand times, it stops being a guardrail. It becomes a ritual. A builder pattern with runtime validation  - something that actually throws if a value looks like a path or source code  - would catch the thing the type cast only claims to prevent.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="entry-point"><span>The 4,683-Line Entry Point</span></h3>
+            <p style="font-size: large;">
+                <code>main.tsx</code> is 4,683 lines and contains every CLI command definition, all argument parsing via Commander.js, the complete OAuth login flow, session resume logic, remote session management, profile startup benchmarking, plugin loading, and MDM configuration. The comments explain why:
+            </p>
+
+            <div class="code-block">// main.tsx - lines 1-8
+// These side-effects must run before all other imports:
+// 1. profileCheckpoint marks entry before heavy module evaluation begins
+// 2. startMdmRawRead fires MDM subprocesses in parallel with the
+//    remaining ~135ms of imports below
+// 3. startKeychainPrefetch fires both macOS keychain reads in parallel
+//    (~65ms on every macOS startup)</div>
+
+            <p style="font-size: large;">
+                Everything is in one file to minimize the import graph depth. Bun evaluates imports eagerly. Deeper import trees mean more startup latency. Keeping everything in <code>main.tsx</code> means one level of imports instead of three or four. They are saving ~135ms at startup by making the entry point unreadable. A lazy-loading command registry  - only load the init module when someone runs <code>claude init</code>, only load OAuth when authentication is needed  - would achieve the same thing. That is how every other CLI tool does it.
+            </p>
+
+            <p style="font-size: large;">
+                The system prompt itself is built in layers: a base prompt, optional teammate instructions, browser integration hints, custom agent prompts, proactive mode addendum, and assistant mode addendum. Each layer is appended via string concatenation in sequence.
+            </p>
+
+            <div class="callout-box info">
+                <p><i class="fa-solid fa-microchip callout-icon" style="color: #4d7cff;"></i> <strong>Feature flags at build time.</strong> Many subsystems are gated behind compile-time feature flags using <code>bun:bundle</code>. Disabled features get their code eliminated at build time, not just branched around at runtime. This keeps the shipped bundle lean for each platform target (CLI, VS Code extension, desktop app, SDK).</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="easter-eggs"><span>String.fromCharCode to Spell "Duck"</span></h3>
+            <p style="font-size: large;">
+                Claude Code has a hidden pet system (behind the <code>BUDDY</code> feature flag). Procedurally generated companions with rarity tiers, species, hats, eye styles, and stat distributions. In <code>buddy/types.ts</code>, the species list is defined like this:
+            </p>
+
+            <div class="code-block">// buddy/types.ts
+// One species name collides with a model-codename canary in
+// excluded-strings.txt. The check greps build output (not source),
+// so runtime-constructing the value keeps the literal out of the
+// bundle while the check stays armed for the actual codename.
+
+const c = String.fromCharCode
+
+export const duck    = c(0x64,0x75,0x63,0x6b) as 'duck'
+export const goose   = c(0x67,0x6f,0x6f,0x73,0x65) as 'goose'
+export const blob    = c(0x62,0x6c,0x6f,0x62) as 'blob'
+export const cat     = c(0x63,0x61,0x74) as 'cat'
+export const dragon  = c(0x64,0x72,0x61,0x67,0x6f,0x6e) as 'dragon'
+export const penguin = c(0x70,0x65,0x6e,0x67,0x75,0x69,0x6e) as 'penguin'
+// ... 12 more species, all hex-encoded</div>
+
+            <p style="font-size: large;">
+                One of the species names collides with an internal model codename. Anthropic's CI greps the build output for these codenames as a security canary. Instead of adding a regex exclusion for the buddy module, they hex-encoded all 18 species names. Future developers reading this file will be baffled by why "duck" cannot just be "duck". But the fact that engineers spent time building a pet system with rarity tiers inside a terminal coding tool is honestly charming.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="multi-agent"><span>Multi-Agent Coordination</span></h3>
+            <p style="font-size: large;">
+                Claude Code can spawn sub-agents via the <code>Agent</code> tool. Each sub-agent runs its own isolated agentic loop with a separate conversation, and optionally a restricted tool set. The leader agent orchestrates; workers execute.
+            </p>
+            <p style="font-size: large;">
+                Workers run with the <strong>swarm worker permission handler</strong>, which auto-denies interactive prompts. They can only do things pre-approved by rules or hooks. If a worker hits a permission wall, it fails gracefully and reports back to the leader. Workers cannot spawn their own sub-agents (no recursive spawning) and each can run in an isolated git worktree to avoid file conflicts.
+            </p>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="error-recovery"><span>Error Recovery</span></h3>
+            <p style="font-size: large;">
+                <strong>413 (prompt too long):</strong> The response is withheld. The system attempts context collapse drain first (cheapest), then reactive compaction (costs an API call). If both fail, it surfaces the error. No silent message dropping.
+            </p>
+            <p style="font-size: large;">
+                <strong>Output truncation:</strong> If the response is capped at the default 8K limit, automatically retry with 64K. If still too long, inject synthetic continue messages up to a configurable limit.
+            </p>
+            <p style="font-size: large;">
+                <strong>Model failure mid-stream:</strong> Tombstone partial messages, strip incompatible thinking blocks, create a fresh streaming executor on the fallback model, notify the user. The conversation continues seamlessly.
+            </p>
+            <p style="font-size: large;">
+                <strong>MCP integration:</strong> MCP tools go through the exact same permission cascade, result size management, and concurrency model as built-in tools. Built-in tools are sorted separately from MCP tools before concatenation in the API call to preserve prompt cache stability  - if MCP tools were interleaved, adding or removing one connection would invalidate the entire prompt cache.
+            </p>
+
+            <div class="callout-box tip">
+                <p><i class="fa-solid fa-shield-check callout-icon" style="color: #00ff88;"></i> <strong>Output sanitization.</strong> All MCP tool outputs pass through a Unicode sanitizer that strips control characters and zero-width sequences. Prevents a malicious MCP server from injecting terminal escape codes that could manipulate your terminal display.</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ================================ -->
+            <h3 id="verdict"><span>The Pattern Underneath</span></h3>
+            <p style="font-size: large;">
+                Most of these issues come from the same root cause: Claude Code grew faster than its architecture could keep up with. You can see the layers of history. A simple terminal REPL grew into a multi-agent coordinator with voice mode, companion pets, vim bindings, and remote sessions. Features got added behind flags faster than old flags got cleaned up. The module graph grew connections faster than anyone drew boundaries.
+            </p>
+            <p style="font-size: large;">
+                This is not unique to Anthropic. Every fast-moving company has codebases like this. The reason Claude Code's case is interesting is the scale: this is one of the most important AI products in the world, and its source reveals the same messy engineering trade-offs that exist at every startup.
+            </p>
+            <p style="font-size: large;">
+                The code ships. It works. Lots of developers rely on it daily. The query loop architecture, the streaming tool executor, the permission classifier with tree-sitter shell parsing  - these are genuinely well-engineered systems. That matters more than clean architecture. But it is worth being honest about the cost.
+            </p>
+
+            <hr class="section-divider">
+
+            <p style="color: rgba(255,255,255,0.3); font-size: 1.4rem; margin-top: 3.2rem;">Built from the source. Last updated March 2026.</p>
+
+        </div>
+    </section>
+
+    <!-- TOC sidebar -->
+    <aside class="toc-sidebar">
+        <div class="toc-title">On this page</div>
+        <a href="#big-picture">The big picture</a>
+        <a href="#agentic-loop">The agentic loop</a>
+        <a href="#streaming">Streaming tool execution</a>
+        <a href="#context">Context management</a>
+        <a href="#tools">The tool system</a>
+        <a href="#permissions">The permission model</a>
+        <a href="#feature-flags">Feature flags</a>
+        <a href="#analytics">The type cast</a>
+        <a href="#entry-point">The entry point</a>
+        <a href="#easter-eggs">Easter eggs</a>
+        <a href="#multi-agent">Multi-agent</a>
+        <a href="#error-recovery">Error recovery</a>
+        <a href="#verdict">The verdict</a>
+    </aside>
+
+    <!-- TOC highlight script -->
+    <script>
+    (function(){
+        const toc = document.querySelector('.toc-sidebar');
+        if (!toc) return;
+        const links = toc.querySelectorAll('a[href^="#"]');
+        const sections = Array.from(links).map(a => ({
+            link: a,
+            target: document.getElementById(a.getAttribute('href').slice(1))
+        })).filter(s => s.target);
+
+        function update() {
+            let current = sections[0];
+            for (const s of sections) {
+                if (s.target.getBoundingClientRect().top <= 120) current = s;
+            }
+            links.forEach(l => l.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
